@@ -32,7 +32,6 @@ function displayCover(bookCoverObj) {
 }
 
 function randomizeBookCover() {
-  console.log("test");
   var bookCover = new Cover(
     covers[getRandomIndex(covers)],
     titles[getRandomIndex(titles)],
