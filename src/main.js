@@ -24,17 +24,20 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function displayCover() {
-  coverImage.src = currentCover.cover;
-  // We need to look at this line 28!!
+function displayCover(bookCoverObj) {
+  coverImage.src = bookCoverObj.cover;
+  coverTitle.innerText = bookCoverObj.title;
+  coverTagLine1.innerText = bookCoverObj.tagline1;
+  coverTagLine2.innerText = bookCoverObj.tagline2;
 }
+
 function randomizeBookCover() {
+  console.log("test");
   var bookCover = new Cover(
-    coverImage[getRandomIndex(covers)],
-    coverTitle[getRandomIndex(titles)],
-    coverTagLine1[getRandomIndex(descriptors)],
-    coverTagLine2[getRandomIndex(descriptors)],
+    covers[getRandomIndex(covers)],
+    titles[getRandomIndex(titles)],
+    descriptors[getRandomIndex(descriptors)],
+    descriptors[getRandomIndex(descriptors)],
   )
   return bookCover;
-  // IF STATEMENT for coverTagLine1 === coverTagLine2 THEN rerun coverTagLine2[getRandomIndex(descriptors)];
 }
