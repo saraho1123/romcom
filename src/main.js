@@ -11,11 +11,13 @@ var coverImage = document.querySelector(".cover-image");
 var coverTitle = document.querySelector(".cover-title");
 var coverTagLine1 = document.querySelector(".tagline-1");
 var coverTagLine2 = document.querySelector(".tagline-2");
+var showRandomButton = document.querySelector(".random-cover-button");
+
 
 
 // Add your event listeners here 👇
 window.onLoad = displayCover(currentCover)
-
+showRandomButton.addEventListener("click", displayCover(currentCover))
 // Create your event handlers and other functions here 👇
 
 
@@ -40,3 +42,11 @@ function randomizeBookCover() {
   )
   return bookCover;
 }
+
+//create a querySelector for random-cover-button
+//create an event listener for click 
+//we think we can just call displayCover function on the click event listeners
+//if not research!
+//
+
+
