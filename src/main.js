@@ -12,10 +12,15 @@ var coverTitle = document.querySelector(".cover-title");
 var coverTagLine1 = document.querySelector(".tagline-1");
 var coverTagLine2 = document.querySelector(".tagline-2");
 var showRandomButton = document.querySelector(".random-cover-button");
+var homeButton = document.querySelector(".home-button");
+var makeNewButton = document.querySelector(".make-new-button");
 
 // Add your event listeners here 👇
 window.onLoad = displayCover(currentCover)
 showRandomButton.addEventListener("click", displayRandomButton);
+makeNewButton.addEventListener("click", displayViewForm);
+homeButton.addEventListener("click", displayHomeView);
+
 // Create your event handlers and other functions here 👇
 
 // We've provided one function to get you started
@@ -45,6 +50,6 @@ function displayRandomButton() {
   displayCover(buttonRandom);
 }
 
+function displayViewForm() {
 
-
-
+}
