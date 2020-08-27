@@ -13,13 +13,10 @@ var coverTagLine1 = document.querySelector(".tagline-1");
 var coverTagLine2 = document.querySelector(".tagline-2");
 var showRandomButton = document.querySelector(".random-cover-button");
 
-
-
 // Add your event listeners here 👇
 window.onLoad = displayCover(currentCover)
-showRandomButton.addEventListener("click", displayCover(currentCover))
+showRandomButton.addEventListener("click", displayRandomButton);
 // Create your event handlers and other functions here 👇
-
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
@@ -43,10 +40,11 @@ function randomizeBookCover() {
   return bookCover;
 }
 
-//create a querySelector for random-cover-button
-//create an event listener for click 
-//we think we can just call displayCover function on the click event listeners
-//if not research!
-//
+function displayRandomButton() {
+  var buttonRandom = randomizeBookCover();
+  displayCover(buttonRandom);
+}
+
+
 
 
