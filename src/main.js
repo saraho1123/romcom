@@ -23,7 +23,7 @@ var homeView = document.querySelector(".home-view");
 window.onLoad = displayCover(currentCover)
 showRandomButton.addEventListener("click", displayRandomButton);
 makeNewButton.addEventListener("click", displayViewForm);
-// homeButton.addEventListener("click", displayHomeView);
+homeButton.addEventListener("click", displayHomeView);
 
 // Create your event handlers and other functions here 👇
 
@@ -61,4 +61,12 @@ function displayViewForm() {
   saveCoverButton.classList.add("hidden");
   showRandomButton.classList.add("hidden");
   homeButton.classList.remove("hidden");
+}
+
+function displayHomeView() {
+  formView.classList.add("hidden");
+  homeView.classList.remove("hidden");
+  showRandomButton.classList.remove("hidden");
+  saveCoverButton.classList.remove("hidden");
+  homeButton.classList.add("hidden");
 }
