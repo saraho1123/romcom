@@ -24,12 +24,9 @@ var userTitleInput = document.querySelector(".user-title");
 var userDescriptionInput1 = document.querySelector(".user-desc1");
 var userDescriptionInput2 = document.querySelector(".user-desc2");
 
-
-
 var formView = document.querySelector(".form-view");
 var homeView = document.querySelector(".home-view");
 var savedCoversView = document.querySelector(".saved-view");
-
 
 // Add your event listeners here 👇
 window.onLoad = displayCover(currentCover)
@@ -117,8 +114,6 @@ function getUserInput() {
   displayCover(userBookCover);
 }
 
-//declare a variable inside of a function and 
-//assign it to a new class instanation using the users input
 
 
 
