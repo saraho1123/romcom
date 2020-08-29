@@ -17,6 +17,14 @@ var homeButton = document.querySelector(".home-button");
 var makeNewButton = document.querySelector(".make-new-button");
 var viewCoversButton = document.querySelector(".view-saved-button");
 var saveCoverButton = document.querySelector(".save-cover-button");
+var newBookButton = document.querySelector(".create-new-book-button");
+
+var userCoverInput = document.querySelector(".user-cover");
+var userTitleInput = document.querySelector(".user-title");
+var userDescriptionInput1 = document.querySelector(".user-desc1");
+var userDescriptionInput2 = document.querySelector(".user-desc2");
+
+
 
 var formView = document.querySelector(".form-view");
 var homeView = document.querySelector(".home-view");
@@ -29,6 +37,7 @@ showRandomButton.addEventListener("click", displayRandomButton);
 makeNewButton.addEventListener("click", displayViewForm);
 homeButton.addEventListener("click", displayHomeView);
 viewCoversButton.addEventListener("click", displaySavedCovers);
+newBookButton.addEventListener("click", displayUserCover);
 
 // Create your event handlers and other functions here 👇
 
@@ -77,10 +86,25 @@ function displayHomeView() {
 }
 
 function displaySavedCovers() {
-  console.log("Is this working")
+
   savedCoversView.classList.remove("hidden");
   homeView.classList.add("hidden");
   showRandomButton.classList.add("hidden");
   saveCoverButton.classList.add("hidden");
   homeButton.classList.remove("hidden");  
 }
+
+function displayUserCover() {
+  coverImage.src = userCoverInput.value;
+  coverTitle.innerText = userTitleInput.value;
+  coverTagLine1.innerText = userDescriptionInput1.value;
+  coverTagLine2.innerText = userDescriptionInput2.value;  
+}
+
+function getUserInput() {
+  covers.push(userCoverInput.value);
+  console.log("hi");
+}
+
+
+
