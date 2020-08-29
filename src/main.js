@@ -5,6 +5,7 @@
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
+
 var currentCover = randomizeBookCover();
 
 var coverImage = document.querySelector(".cover-image");
@@ -29,14 +30,17 @@ var homeView = document.querySelector(".home-view");
 var savedCoversView = document.querySelector(".saved-view");
 
 // Add your event listeners here 👇
-window.onLoad = displayCover(currentCover)
+window.onLoad = displayRandomOnLoad();
 showRandomButton.addEventListener("click", displayRandomButton);
 makeYourCoverButton.addEventListener("click", displayViewForm);
 homeButton.addEventListener("click", displayHomeView);
 viewCoversButton.addEventListener("click", displaySavedCovers);
 myBookButton.addEventListener("click", displayUserCover);
+saveCoverButton.addEventListener("click", saveCovers)
 
 // Create your event handlers and other functions here 👇
+
+
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
@@ -44,10 +48,12 @@ function getRandomIndex(array) {
 }
 
 function displayCover(bookCoverObj) {
+  console.log(currentCover)
   coverImage.src = bookCoverObj.cover;
   coverTitle.innerText = bookCoverObj.title;
   coverTagLine1.innerText = bookCoverObj.tagline1;
   coverTagLine2.innerText = bookCoverObj.tagline2;
+
 }
 
 function randomizeBookCover() {
@@ -57,17 +63,24 @@ function randomizeBookCover() {
     descriptors[getRandomIndex(descriptors)],
     descriptors[getRandomIndex(descriptors)],
   )
-  console.log(bookCover);
   return bookCover;
+}
+
+function displayRandomOnLoad() {
+  var random = randomizeBookCover();
+  currentCover = random;
+  displayCover(random);
+
 }
 
 function displayRandomButton() {
   var buttonRandom = randomizeBookCover();
+  currentCover = buttonRandom;
   displayCover(buttonRandom);
+
 }
 
 function displayViewForm() {
-  console.log("It's a beautiful day!")
   formView.classList.remove("hidden");
   homeView.classList.add("hidden");
   saveCoverButton.classList.add("hidden");
@@ -88,12 +101,14 @@ function displaySavedCovers() {
   homeView.classList.add("hidden");
   showRandomButton.classList.add("hidden");
   saveCoverButton.classList.add("hidden");
-  homeButton.classList.remove("hidden");  
+  homeButton.classList.remove("hidden");
 }
 
 function displayUserCover() {
   event.preventDefault();
-  getUserInput();
+  var userCover = getUserInput();
+  currentCover = userCover;
+  displayCover(userCover);
   displayHomeView();
 }
 
@@ -111,9 +126,13 @@ function getUserInput() {
     userDescriptionInput1.value,
     userDescriptionInput2.value,
   )
+  return userBookCover;
   displayCover(userBookCover);
+
+
 }
 
-
-
-
+function saveCovers() {
+  savedCovers.push(currentCover)
+  console.log(savedCovers);
+}
