@@ -48,7 +48,6 @@ function getRandomIndex(array) {
 }
 
 function displayCover(bookCoverObj) {
-  console.log(currentCover)
   coverImage.src = bookCoverObj.cover;
   coverTitle.innerText = bookCoverObj.title;
   coverTagLine1.innerText = bookCoverObj.tagline1;
@@ -128,11 +127,11 @@ function getUserInput() {
   )
   return userBookCover;
   displayCover(userBookCover);
-
-
 }
 
 function saveCovers() {
-  savedCovers.push(currentCover)
-  console.log(savedCovers);
-}
+    if (!savedCovers.includes(currentCover)) {
+      savedCovers.push(currentCover)
+    }
+    console.log(savedCovers);
+  }
