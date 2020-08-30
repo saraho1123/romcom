@@ -28,6 +28,7 @@ var userDescriptionInput2 = document.querySelector(".user-desc2");
 var formView = document.querySelector(".form-view");
 var homeView = document.querySelector(".home-view");
 var savedCoversView = document.querySelector(".saved-view");
+var savedCoversGrid = document.querySelector(".saved-covers-section");
 
 // Add your event listeners here 👇
 window.onLoad = displayRandomOnLoad();
@@ -130,8 +131,21 @@ function getUserInput() {
 }
 
 function saveCovers() {
-    if (!savedCovers.includes(currentCover)) {
-      savedCovers.push(currentCover)
-    }
-    console.log(savedCovers);
+  var savedCoversBox = savedCoversGrid.innerHTML
+  if (!savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover)
   }
+  formatSavedCovers();
+}
+
+function formatSavedCovers() {
+  var miniCover =
+  `
+  <div class="mini-cover">
+    <img class="mini-cover" src="${currentCover.cover}">
+    <h2 class="cover-title cover-title::first-letter"> ${currentCover.title}</h2>
+    <h3 class="tagline">A tale of ${currentCover.tagline1} and ${currentCover.tagline2}</h3>
+  </div>
+  `
+  savedCoversGrid.insertAdjacentHTML("afterbegin", miniCover);
+}
