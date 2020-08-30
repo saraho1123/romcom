@@ -83,6 +83,7 @@ function displayRandomButton() {
 function displayViewForm() {
   formView.classList.remove("hidden");
   homeView.classList.add("hidden");
+  savedCoversView.classList.add("hidden");
   saveCoverButton.classList.add("hidden");
   showRandomButton.classList.add("hidden");
   homeButton.classList.remove("hidden");
@@ -134,8 +135,10 @@ function saveCovers() {
   var savedCoversBox = savedCoversGrid.innerHTML
   if (!savedCovers.includes(currentCover)) {
     savedCovers.push(currentCover)
+    formatSavedCovers();
+
+    console.log(savedCovers);
   }
-  formatSavedCovers();
 }
 
 function formatSavedCovers() {
