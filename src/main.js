@@ -12,19 +12,16 @@ var coverImage = document.querySelector(".cover-image");
 var coverTitle = document.querySelector(".cover-title");
 var coverTagLine1 = document.querySelector(".tagline-1");
 var coverTagLine2 = document.querySelector(".tagline-2");
-
 var showRandomButton = document.querySelector(".random-cover-button");
 var homeButton = document.querySelector(".home-button");
 var makeYourCoverButton = document.querySelector(".make-new-button");
 var viewCoversButton = document.querySelector(".view-saved-button");
 var saveCoverButton = document.querySelector(".save-cover-button");
 var myBookButton = document.querySelector(".create-new-book-button");
-
 var userCoverInput = document.querySelector(".user-cover");
 var userTitleInput = document.querySelector(".user-title");
 var userDescriptionInput1 = document.querySelector(".user-desc1");
 var userDescriptionInput2 = document.querySelector(".user-desc2");
-
 var formView = document.querySelector(".form-view");
 var homeView = document.querySelector(".home-view");
 var savedCoversView = document.querySelector(".saved-view");
@@ -40,8 +37,6 @@ myBookButton.addEventListener("click", displayUserCover);
 saveCoverButton.addEventListener("click", saveCovers)
 
 // Create your event handlers and other functions here 👇
-
-
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
