@@ -1,13 +1,5 @@
-// Create variables targetting the relevant DOM elements here 👇
-
-
-// We've provided a few variables below
-var savedCovers = [
-  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-];
-
+var savedCovers = [];
 var currentCover = randomizeBookCover();
-
 var coverImage = document.querySelector(".cover-image");
 var coverTitle = document.querySelector(".cover-title");
 var coverTagLine1 = document.querySelector(".tagline-1");
@@ -27,18 +19,15 @@ var homeView = document.querySelector(".home-view");
 var savedCoversView = document.querySelector(".saved-view");
 var savedCoversGrid = document.querySelector(".saved-covers-section");
 
-// Add your event listeners here 👇
 window.onLoad = displayRandomOnLoad();
 showRandomButton.addEventListener("click", displayRandomButton);
 makeYourCoverButton.addEventListener("click", displayViewForm);
 homeButton.addEventListener("click", displayHomeView);
 viewCoversButton.addEventListener("click", displaySavedCovers);
 myBookButton.addEventListener("click", displayUserCover);
-saveCoverButton.addEventListener("click", saveCovers)
+saveCoverButton.addEventListener("click", saveCovers);
+savedCoversGrid.addEventListener("dblclick", deleteSavedCover);
 
-// Create your event handlers and other functions here 👇
-
-// We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -48,7 +37,6 @@ function displayCover(bookCoverObj) {
   coverTitle.innerText = bookCoverObj.title;
   coverTagLine1.innerText = bookCoverObj.tagline1;
   coverTagLine2.innerText = bookCoverObj.tagline2;
-
 }
 
 function randomizeBookCover() {
@@ -65,14 +53,12 @@ function displayRandomOnLoad() {
   var random = randomizeBookCover();
   currentCover = random;
   displayCover(random);
-
 }
 
 function displayRandomButton() {
   var buttonRandom = randomizeBookCover();
   currentCover = buttonRandom;
   displayCover(buttonRandom);
-
 }
 
 function displayViewForm() {
@@ -131,19 +117,31 @@ function saveCovers() {
   if (!savedCovers.includes(currentCover)) {
     savedCovers.push(currentCover)
     formatSavedCovers();
-
-    console.log(savedCovers);
   }
 }
 
 function formatSavedCovers() {
-  var miniCover =
-  `
-  <div class="mini-cover">
-    <img class="mini-cover" src="${currentCover.cover}">
-    <h2 class="cover-title cover-title::first-letter"> ${currentCover.title}</h2>
-    <h3 class="tagline">A tale of ${currentCover.tagline1} and ${currentCover.tagline2}</h3>
-  </div>
-  `
-  savedCoversGrid.insertAdjacentHTML("afterbegin", miniCover);
+  savedCoversGrid.innerHTML = "";
+  for(var i = 0; i < savedCovers.length; i++) {
+    var littleCover = savedCovers[i];
+    var miniCover =
+    `
+    <div class="mini-cover" id="${littleCover.id}">
+      <img class="mini-cover" id="${littleCover.id}" src="${littleCover.cover}">
+      <h2 class="cover-title id="${littleCover.id}" cover-title::first-letter"> ${littleCover.title}</h2>
+      <h3 class="tagline" id="${littleCover.id}">A tale of ${littleCover.tagline1} and ${littleCover.tagline2}</h3>
+    </div>
+    ` 
+    savedCoversGrid.innerHTML += miniCover;
+  }
 }
+
+function deleteSavedCover(event) {
+  for(var i = 0; i < savedCovers.length; i++) {
+    if(savedCovers[i].id  == event.target.id) {
+      savedCovers.splice(i, 1);
+    }
+  }
+  formatSavedCovers();
+}
+  
