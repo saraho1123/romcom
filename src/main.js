@@ -1,13 +1,5 @@
-// Create variables targetting the relevant DOM elements here 👇
-
-
-// We've provided a few variables below
-var savedCovers = [
-  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-];
-
+var savedCovers = [];
 var currentCover = randomizeBookCover();
-
 var coverImage = document.querySelector(".cover-image");
 var coverTitle = document.querySelector(".cover-title");
 var coverTagLine1 = document.querySelector(".tagline-1");
@@ -26,10 +18,7 @@ var formView = document.querySelector(".form-view");
 var homeView = document.querySelector(".home-view");
 var savedCoversView = document.querySelector(".saved-view");
 var savedCoversGrid = document.querySelector(".saved-covers-section");
-//var savedMiniCovers = document.querySelector("#currentCover.id")
 
-
-// Add your event listeners here 👇
 window.onLoad = displayRandomOnLoad();
 showRandomButton.addEventListener("click", displayRandomButton);
 makeYourCoverButton.addEventListener("click", displayViewForm);
@@ -38,12 +27,7 @@ viewCoversButton.addEventListener("click", displaySavedCovers);
 myBookButton.addEventListener("click", displayUserCover);
 saveCoverButton.addEventListener("click", saveCovers);
 savedCoversGrid.addEventListener("dblclick", deleteSavedCover);
-//savedMiniCovers.addEventListener('dblclick', deleteSavedCover);
 
-
-// Create your event handlers and other functions here 👇
-
-// We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -53,7 +37,6 @@ function displayCover(bookCoverObj) {
   coverTitle.innerText = bookCoverObj.title;
   coverTagLine1.innerText = bookCoverObj.tagline1;
   coverTagLine2.innerText = bookCoverObj.tagline2;
-
 }
 
 function randomizeBookCover() {
@@ -70,14 +53,12 @@ function displayRandomOnLoad() {
   var random = randomizeBookCover();
   currentCover = random;
   displayCover(random);
-
 }
 
 function displayRandomButton() {
   var buttonRandom = randomizeBookCover();
   currentCover = buttonRandom;
   displayCover(buttonRandom);
-
 }
 
 function displayViewForm() {
@@ -157,8 +138,9 @@ function formatSavedCovers() {
 
 function deleteSavedCover(event) {
   for(var i = 0; i < savedCovers.length; i++) {
-    if(savedCovers[i].id  == event.target.id)
-    savedCovers.splice(i, 1);
+    if(savedCovers[i].id  == event.target.id) {
+      savedCovers.splice(i, 1);
+    }
   }
   formatSavedCovers();
 }
