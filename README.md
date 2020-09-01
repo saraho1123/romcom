@@ -12,6 +12,8 @@ The goal of this project is to write clean, DRY JavaScript, to use and store dat
 
 Romance was in the air for this project! Well ... maybe on the screen ... the small screen! We were asked to write JavaScript that would allow a user to display random romance novel book covers, save book covers they like, as well as create and save (if they chose) their own covers.
 
+We were able to complete functionality for all five iterations of the assigned project. Team work was important in completing this project along with some input from cohort mates and a Turing mentor.
+
  To highlight the main features of our project, we are including several screenshots.
 
 Screenshot of a random cover:
