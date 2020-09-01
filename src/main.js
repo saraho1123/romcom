@@ -140,37 +140,26 @@ function saveCovers() {
 }
 
 function formatSavedCovers() {
+  savedCoversGrid.innerHTML = "";
   for(var i = 0; i < savedCovers.length; i++) {
     var littleCover = savedCovers[i];
+    var miniCover =
+    `
+    <div class="mini-cover" id="${littleCover.id}">
+      <img class="mini-cover" id="${littleCover.id}" src="${littleCover.cover}">
+      <h2 class="cover-title id="${littleCover.id}" cover-title::first-letter"> ${littleCover.title}</h2>
+      <h3 class="tagline" id="${littleCover.id}">A tale of ${littleCover.tagline1} and ${littleCover.tagline2}</h3>
+    </div>
+    ` 
+    savedCoversGrid.innerHTML += miniCover;
   }
-  var miniCover =
-  `
-  <div class="mini-cover" id="${littleCover.id}">
-    <img class="mini-cover" id="${littleCover.id}" src="${littleCover.cover}">
-    <h2 class="cover-title id="${littleCover.id}" cover-title::first-letter"> ${littleCover.title}</h2>
-    <h3 class="tagline" id="${littleCover.id}">A tale of ${littleCover.tagline1} and ${littleCover.tagline2}</h3>
-  </div>
-  ` 
-  savedCoversGrid.insertAdjacentHTML("afterbegin", miniCover);
 }
-
 
 function deleteSavedCover(event) {
   for(var i = 0; i < savedCovers.length; i++) {
     if(savedCovers[i].id  == event.target.id)
-      savedCovers.splice(i, 1);
-    }
-    redisplaySavedCovers();
+    savedCovers.splice(i, 1);
   }
-  
-  function redisplaySavedCovers() {
-    for(var i = 0; i < savedCovers.length; i++) {
-      if(savedCovers[i].id  == event.target.id) {
-        var littleCover =`#${savedCovers[i].id}`;
-        console.log(littleCover);
-        var littleCoverID = savedCoversGrid.querySelector(littleCover);
-        console.log(littleCoverID);
-      } 
-  }
-  //littleCoverID.innerText = ``;
+  formatSavedCovers();
 }
+  
