@@ -154,11 +154,23 @@ function formatSavedCovers() {
   savedCoversGrid.insertAdjacentHTML("afterbegin", miniCover);
 }
 
+
 function deleteSavedCover(event) {
-  console.log(savedCovers);
   for(var i = 0; i < savedCovers.length; i++) {
     if(savedCovers[i].id  == event.target.id)
       savedCovers.splice(i, 1);
     }
+    redisplaySavedCovers();
   }
-
+  
+  function redisplaySavedCovers() {
+    for(var i = 0; i < savedCovers.length; i++) {
+      if(savedCovers[i].id  == event.target.id) {
+        var littleCover =`#${savedCovers[i].id}`;
+        console.log(littleCover);
+        var littleCoverID = savedCoversGrid.querySelector(littleCover);
+        console.log(littleCoverID);
+      } 
+  }
+  //littleCoverID.innerText = ``;
+}
