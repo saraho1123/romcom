@@ -26,6 +26,8 @@ var formView = document.querySelector(".form-view");
 var homeView = document.querySelector(".home-view");
 var savedCoversView = document.querySelector(".saved-view");
 var savedCoversGrid = document.querySelector(".saved-covers-section");
+//var savedMiniCovers = document.querySelector("#currentCover.id")
+
 
 // Add your event listeners here 👇
 window.onLoad = displayRandomOnLoad();
@@ -34,7 +36,10 @@ makeYourCoverButton.addEventListener("click", displayViewForm);
 homeButton.addEventListener("click", displayHomeView);
 viewCoversButton.addEventListener("click", displaySavedCovers);
 myBookButton.addEventListener("click", displayUserCover);
-saveCoverButton.addEventListener("click", saveCovers)
+saveCoverButton.addEventListener("click", saveCovers);
+savedCoversGrid.addEventListener("dblclick", deleteSavedCover);
+//savedMiniCovers.addEventListener('dblclick', deleteSavedCover);
+
 
 // Create your event handlers and other functions here 👇
 
@@ -131,19 +136,29 @@ function saveCovers() {
   if (!savedCovers.includes(currentCover)) {
     savedCovers.push(currentCover)
     formatSavedCovers();
-
-    console.log(savedCovers);
   }
 }
 
 function formatSavedCovers() {
+  for(var i = 0; i < savedCovers.length; i++) {
+    var littleCover = savedCovers[i];
+  }
   var miniCover =
   `
-  <div class="mini-cover">
-    <img class="mini-cover" src="${currentCover.cover}">
-    <h2 class="cover-title cover-title::first-letter"> ${currentCover.title}</h2>
-    <h3 class="tagline">A tale of ${currentCover.tagline1} and ${currentCover.tagline2}</h3>
+  <div class="mini-cover" id="${littleCover.id}">
+    <img class="mini-cover" id="${littleCover.id}" src="${littleCover.cover}">
+    <h2 class="cover-title id="${littleCover.id}" cover-title::first-letter"> ${littleCover.title}</h2>
+    <h3 class="tagline" id="${littleCover.id}">A tale of ${littleCover.tagline1} and ${littleCover.tagline2}</h3>
   </div>
-  `
+  ` 
   savedCoversGrid.insertAdjacentHTML("afterbegin", miniCover);
 }
+
+function deleteSavedCover(event) {
+  console.log(savedCovers);
+  for(var i = 0; i < savedCovers.length; i++) {
+    if(savedCovers[i].id  == event.target.id)
+      savedCovers.splice(i, 1);
+    }
+  }
+
