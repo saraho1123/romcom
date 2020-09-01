@@ -15,7 +15,9 @@ To highlight the main features of our project, we are inlcuding several screensh
 
 Screenshot of a random cover:
 
-(project-screenshots/romcom-screenshot-home-view-random-cover.png)
+![Screenshot of random cover](project-screenshots/romcom-screenshot-home-view-random-cover.png)
+Format: ![Alt Text](url)
+
 
 Screenshot of a user generated cover:
 
